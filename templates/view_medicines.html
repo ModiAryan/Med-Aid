@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Medicines</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(rgba(33, 143, 145, 0.7),rgba(67, 153, 164, 0.7));
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #000000;
+        }
+        .container {
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        .table-container {
+            background-color: rgba(125, 123, 123, 0.8); 
+            border-radius: 8px;
+            padding: 20px;
+        }
+        h1 {
+            color: #faf9f9;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+        .mt-5{
+            font-size: 60px;
+            color: rgb(241, 239, 239);
+        }
+    </style>
+</head>
+<body>
+
+        <div class="container">
+            <h1 class="mt-5">View Medicines</h1>
+            <div class="table-container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Manufacturer</th>
+                            <th>Quantity</th>
+                            <th>Expiry Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for medicine in medicines %}
+                            <tr>
+                                <td>{{ medicine[0] }}</td>
+                                <td>{{ medicine[1] }}</td>
+                                <td>{{ medicine[2] }}</td>
+                                <td>{{ medicine[3] }}</td>
+                                <td>{{ medicine[4] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Back to Home</a>
+        </div>
+
+</body>
+</html>

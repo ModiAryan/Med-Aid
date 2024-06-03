@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Medicine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+    .header {
+        min-height: 100vh;
+        width: 100%;
+        background-image: linear-gradient(rgba(33, 143, 145, 0.7),rgba(67, 153, 164, 0.7)),url(templates/pharmacy.jpg);
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+        background-color: linear-gradient(rgba(9,39,25,0.7),rgba(23,38,40,0.7));
+        border-radius: 8px;
+        justify-content: center;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+        text-align: center;
+        color: #333;
+    }
+
+    .box {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        text-align: center;
+        transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+    }
+
+    .box:hover {
+        transform: scale(1.05);
+    }
+
+    .box-primary {
+        background-color: #cce5ff;
+        border: 1px solid #b8daff;
+    }
+
+    .box-secondary {
+        background-color: #e2e3e5;
+        border: 1px solid #d6d8db;
+    }
+
+    .box-success {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+    }
+
+    .box-danger {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+    }
+
+    .box-warning {
+        background-color: #fff3cd;
+        border: 1px solid #ffeeba;
+    }
+
+    .box-info {
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+    }
+    .mt-5{
+        color: #ffffff;
+        font-size: 60px;
+    }
+    .form-control{
+        color: #000000;
+    }
+    label{
+        font-size: 20px;
+        color: #ffffff;
+    }
+</style>
+</head>
+<body>
+    <section class="header">
+        <div class="container">
+            <h1 class="mt-5">Add Medicine</h1>
+            <form action="{{ url_for('add_medicine') }}" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="manufacturer">Manufacturer:</label>
+                    <input type="text" class="form-control" id="manufacturer" name="manufacturer" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry_date">Expiry Date:</label>
+                    <input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Medicine</button>
+            </form>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Back to Home</a>
+
+        </div>
+    </section>
+</body>
+</html>

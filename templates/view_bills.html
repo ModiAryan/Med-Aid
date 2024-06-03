@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bills</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(rgba(33, 143, 145, 0.7),rgba(67, 153, 164, 0.7)),url(templates/pharmacy.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #000000;
+        }
+        .container {
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        .table-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+        .mt-5{
+            font-size: 60px;
+            color: rgb(241, 239, 239);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">View Bills</h1>
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Medicine Name</th>
+                        <th>Quantity</th>
+                        <th>Total Cost</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bill in bills %}
+                        <tr>
+                            <td>{{ bill[0] }}</td>
+                            <td>{{ bill[1] }}</td>
+                            <td>{{ bill[2] }}</td>
+                            <td>{{ bill[3] }}</td>
+                            <td>{{ bill[4] }}</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('view_bills') }}">
+                                    <input type="hidden" name="bill_id" value="{{ bill[0] }}">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Back to Bills</a>
+    </div>
+</body>
+</html>

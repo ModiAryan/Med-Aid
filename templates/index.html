@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(Images/pharmacy.jpg);
+            background-color:rgba(33, 143, 145, 0.7);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #000000;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .med {
+            width: 100%;
+            text-align: center;
+            color: linear-gradient(rgba(33, 143, 145, 0.7),rgba(67, 153, 164, 0.7)),url(templates/pharmacy.jpg);
+            padding: 20px;
+            border-radius: 10px;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+        h1 {
+            font-size: 50px;
+            margin: 0;
+            color: rgba(253, 250, 253, 0.893);
+            font-size: 60px;
+        }
+        .row1, .row2 {
+            padding-top: 100px;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .med-col {
+            flex-basis: 30%;
+            background: linear-gradient(rgba(33, 143, 145, 0.7),rgba(67, 153, 164, 0.7)),url(templates/pharmacy.jpg);
+            border-radius: 10px;
+            margin-bottom: 5%;
+            padding: 20px 12px;
+            box-sizing: border-box;
+            transition: 1s;
+        }
+        .med-col a {
+            text-decoration: none;
+            color: #f8f9fa;
+            font-weight: bold;
+        }
+        .med-col:hover {
+            box-shadow: 10px 10px 20px 20px rgba(241, 239, 241, 0.63);
+        }
+    </style>
+</head>
+<body>
+    <section class="med" id="med">
+        <h1><u>MeD-AiD</u></h1>
+        <div class="row1">
+            <div class="med-col">
+                <a href="{{ url_for('add_medicine') }}">ADD MEDICINES<br>
+                    <p>Click here to<br>add medicine</p></a>
+            </div>
+            <div class="med-col">
+                <a href="{{ url_for('update_medicine') }}">UPDATE MEDICINES<br>
+                    <p>Click here to<br>update medicine</p></a>
+            </div>
+            <div class="med-col">
+                <a href="{{ url_for('delete_medicine') }}">DELETE MEDICINES<br>
+                    <p>Click here to<br>delete medicine</p></a>
+            </div>
+        </div>
+        <div class="row2">
+            <div class="med-col">
+                <a href="{{ url_for('view_medicines') }}">VIEW MEDICINES<br>
+                    <p>Click here to<br>view list of medicine</p></a>
+            </div>
+            <div class="med-col">
+                <a href="{{ url_for('generate_bill') }}">GENERATE BILL<br>
+                    <p>Click here to<br>generate medicine bill</p></a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
